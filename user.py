@@ -8,6 +8,7 @@ log = logging.getLogger(__name__)
 
 class User(RedisObject):
     def __init__(self, username):
+        super(User, self).__init__()
         self['username'] = username
 
     @property

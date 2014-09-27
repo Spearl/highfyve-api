@@ -3,8 +3,8 @@ import os
 import redis
 import uuid
 
-from flask import request, jsonify, url_for, render_template, abort, json
-from flask_oauth import OAuth
+from flask import request, jsonify, render_template, abort, json
+# from flask_oauth import OAuth
 
 from make_app import make_json_app
 from user import User
@@ -71,13 +71,8 @@ def login():
 
 
 @app.route('/')
-def hello():
+def fyve():
     return render_template('index.html')
-
-
-@app.route('/user', methods=['GET'])
-def user_info():
-    pass
 
 
 @app.route('/fiver', methods=['GET', 'POST'])
