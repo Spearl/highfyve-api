@@ -51,6 +51,7 @@ MAX_FYVE_DISTANCE = 0.011
 #     flash('You were signed in as %s' % resp['screen_name'])
 #     return redirect(next_url)
 
+
 @app.route('/login', methods=['POST'])
 def login():
     username = request.form['username']
@@ -67,6 +68,7 @@ def login():
         if password != user['password']:
             abort(401)
     return jsonify({'api_key': user['api_key']})
+
 
 @app.route('/')
 def hello():
@@ -125,10 +127,46 @@ def fiver():
 
 @app.route('/fivee', methods=['GET', 'POST'])
 def fivee():
+    user = User.get_user_from_token(request.form['token'])
+    user.load()
     if request.method == 'POST':
-        pass
+        user['lat'] = request.form['lat']
+        user['lng'] = request.form['lng']
+        user.save()
+        fiver_wait_list = User.get_wait_list('fiver')
+        fiver_match = None
+        fiver_distance = None
+        for str_fiver in fiver_wait_list:
+            fiver = json.loads(str_fiver)
+            distance = user.distance(fiver['lat'], fiver['lng'])
+            if fiver_distance is None or distance < fiver_distance:
+                fiver_distance = distance
+                fiver_match = str_fiver
+
+        if fiver_distance is None or fiver_distance > MAX_FYVE_DISTANCE:
+            # No matches
+            user['match'] = "..."
+            user.save()
+            User.insert_into_wait_list('fivee', json.dumps(user.wait_list_format))
+            return jsonify({})
+
+        # We found a match!
+        User.remove_from_wait_list('fiver', fiver_match)
+        fiver_match = User(json.loads(fiver_match)['username'])
+        fiver_match['match'] = user['username']
+        fiver_match.save()
+
+        return jsonify(fiver_match.match_format)
+
     else:
-        pass
+        # Checking in for a match
+        if user['match'] == "...":
+            # Still waiting
+            return jsonify({})
+        # We have a match!
+        match_user = User(user['match'])
+        match_user.load()
+        return jsonify(match_user.match_format)
 
 
 @app.route('/bail', methods=['POST'])
