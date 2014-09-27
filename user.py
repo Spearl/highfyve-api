@@ -67,4 +67,4 @@ class User(RedisObject):
         return cls.get_redis().srem(list_key, value)
 
     def distance(self, lat, lng):
-        return math.sqrt((lat - self['lat'])**2 + (lng - self['lng'])**2)
+        return math.sqrt((float(lat) - float(self['lat']))**2 + (float(lng) - float(self['lng']))**2)
