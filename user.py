@@ -39,7 +39,7 @@ class User(RedisObject):
         return {"status": self['status']}
 
     def save_token(self):
-        self.redis.set(self['token'], self['username'])
+        self.redis.set(self['api_key'], self['username'])
 
     def rate(self, rating):
         try:
