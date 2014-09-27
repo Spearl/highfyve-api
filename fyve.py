@@ -2,6 +2,8 @@ import logging
 import os
 import redis
 
+from flask import request
+
 from make_app import make_json_app
 
 logging.basicConfig(level=logging.INFO)
@@ -13,26 +15,43 @@ app = make_json_app(__name__)
 redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 redis = redis.from_url(redis_url)
 
+
 @app.route('/')
 def hello():
     return "high fyve!"
 
-@app.route('/fiver')
+
+@app.route('/auth', methods=['POST'])
+def auth():
+    pass
+
+
+@app.route('/fiver', methods=['GET', 'POST'])
 def fiver():
-    pass
+    if request.method == 'POST':
+        pass
+    else:
+        pass
 
-@app.route('/fivee')
+
+@app.route('/fivee', methods=['GET', 'POST'])
 def fivee():
-    pass
+    if request.method == 'POST':
+        pass
+    else:
+        pass
 
-@app.route('/bail')
+
+@app.route('/bail', methods=['POST'])
 def bail():
     pass
 
-@app.route('/successawesome')
+
+@app.route('/successawesome', methods=['POST'])
 def success():
     pass
 
-@app.route('/rating')
+
+@app.route('/rating', methods=['POST'])
 def rate():
     pass
