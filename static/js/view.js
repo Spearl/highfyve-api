@@ -27,8 +27,8 @@ Fyve.Views.welcome = function () {
   return (
     '<div class="welcome-container">' +
       '<div class="hand-right"><img src="static/assets/intro-right.png"></div>' +
-      '<div class="hand-left"><img src=static/assets/intro-left.png"></div>' +
-      '<div class="logo hidden"><img src=static/assets/logo-stacked.png"></div>' +
+      '<div class="hand-left"><img src="static/assets/intro-left.png"></div>' +
+      '<div class="logo hidden"><img src="static/assets/logo-stacked.png"></div>' +
       '<div class="button enter hidden" data-next="true">' +
         '<div class="button-inner yellow"><h2>Enter</h2></div>' +
       '</div>' +
@@ -100,13 +100,14 @@ Fyve.Views.readyTofyve = function (fyveRole) {
     return (
       '<div class="user-wrapper">' +
         '<h2>@foleyatwork</h2>' +
-        '<p>300ft away.</p>' +
+        '<p>300ft away. Stay put and wait to be high fived.</p>' +
         '<div class="map"><img src="static/assets/map.png"></div>' +
         '<div class="button" data-next="true" data-success="true"><div class="button-inner yellow"><h2>Nice, Bro!</h2></div></div>' +
         '<div class="button" data-next="true" data-success="false"><div class="button-inner orange"><h2>Left me Hanging</h2></div></div>' +
       '</div>'
     );
   } else {
+    console.log('yuno');
       '<div class="user-wrapper">' +
         '<h2>@thefatling</h2>' +
         '<p>300ft away.</p>' +

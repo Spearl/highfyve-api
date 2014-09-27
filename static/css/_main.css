@@ -75,7 +75,7 @@ a:hover {
   pointer-events: none;
 }
 .button {
-  background-image: url('../static/assets/btn-wide-outline.png');
+  background-image: url('../assets/btn-wide-outline.png');
   background-size: cover;
   width: 492px;
   height: 0;
@@ -94,7 +94,7 @@ a:hover {
   top: 35%;
 }
 .button .button-inner {
-  background-image: url('../static/assets/btn-wide-fill.png');
+  background-image: url('../assets/btn-wide-fill.png');
   background-size: 100% 500%;
   position: absolute;
   width: 100%;

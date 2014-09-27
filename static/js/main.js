@@ -84,6 +84,7 @@ $(function () {
     if (current == 2) {
       setTimeout(function () {
         current++;
+        console.log(route[current]);
         changeState(route[current]);
       }, 2000);
     }
