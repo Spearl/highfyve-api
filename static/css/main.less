@@ -1,10 +1,21 @@
 
+/*
+ __  __     __     ______     __  __        ______   __  __     __   __   ______     ______    
+/\ \_\ \   /\ \   /\  ___\   /\ \_\ \      /\  ___\ /\ \_\ \   /\ \ / /  /\  ___\   /\  ___\   
+\ \  __ \  \ \ \  \ \ \__ \  \ \  __ \     \ \  __\ \ \____ \  \ \ \'/   \ \  __\   \ \___  \  
+ \ \_\ \_\  \ \_\  \ \_____\  \ \_\ \_\     \ \_\    \/\_____\  \ \__|    \ \_____\  \/\_____\ 
+  \/_/\/_/   \/_/   \/_____/   \/_/\/_/      \/_/     \/_____/   \/_/      \/_____/   \/_____/ 
+                                                                                               
+*/
+
 @yellow: #ffcf2c;
 @orange: #ff981f;
 @blue:   #54c0e1;
 @purple: #9b89d3;
 @black:  #072c2e;
 @white:  #fff;
+
+@cubic: cubic-bezier(0, 1.2, 1, 1.2);
 
 ::-moz-selection {
   background: #b3d4fc;
@@ -20,20 +31,22 @@ html {
   -moz-box-sizing: border-box;
        box-sizing: border-box;
   line-height: 1.4;
+
+  *, *:before, *:after {
+    -moz-box-sizing: inherit;
+         box-sizing: inherit;
+  }
 }
 
-html *, html *:before, html *:after {
-  -moz-box-sizing: inherit;
-       box-sizing: inherit;
+html, body {
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   background-color: @blue;
   color: @black;
   font: 16px/26px Helvetica, Helvetica Neue, Arial;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2em;
 }
 
 h1, h2, h3, h4 {
@@ -52,7 +65,217 @@ a {
 }
 
 .title {
-  font-size: 30px;
-  font-weight: 300;
   letter-spacing: 1px;
+  margin: 0;
 }
+
+.container {
+  backface-visibility: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2em;
+  transition: transform 0.2s @cubic, opacity 0.1s @cubic;
+}
+
+.container {
+  height: 100%;
+}
+
+.hidden {
+  transform: scale(.8);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.button {
+  background-image: url('../static/assets/btn-wide-outline.png');
+  background-size: cover;
+  width: 492px;
+  height: 0;
+  padding-bottom: 29%;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.1s @cubic, opacity 0.1s @cubic;
+  transform: scale(1);
+  text-align: center;
+
+  &.enter {
+    position: relative;
+    top: 35%;
+  }
+
+  .button-inner {
+    background-image: url('../static/assets/btn-wide-fill.png');
+    background-size: 100% 500%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    &.white  { background-position: 0 0; }
+    &.orange { background-position: 0 50%; }
+    &.purple { background-position: 0 75%; }
+    &.blue   { background-position: 0 100%; }
+
+    &.yellow {
+      background-position: 0 25%;
+
+      h2 {
+        color: black;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      position: relative;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+}
+
+
+
+/* Welcome */
+
+.welcome-container {
+  height: 100%;
+
+  img {
+    max-width: 100%;
+  }
+
+  .logo {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: -1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    &.hidden {
+      transform: scale(0.2);
+      opacity: 0;
+    }
+  }
+}
+
+.hand-left,
+.hand-right {
+  position: absolute;
+  transition: transform .75s linear;
+  top: 50%;
+  width: 60%;
+
+  &.high-five-me-bro {
+    transform: translate(0, -50%);
+  }
+}
+
+.hand-left {
+  left: 0;
+  transform: translate(-100%, -50%);
+}
+
+.hand-right {
+  right: 0;
+  transform: translate(100%, -50%);
+}
+
+
+/* Waiting Icons */
+
+.waiting {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &.centered {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .gradient {
+    animation: spin 1.5s infinite linear;
+    background-image: radial-gradient(ellipse farthest-corner at 45px 45px , @yellow 0%, @purple 50%, @orange 95%);
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 120%;
+    height: 120%;
+    z-index: -1;
+  }
+
+  &.purple {
+    .gradient {
+      background-image: radial-gradient(ellipse farthest-corner at 45px 45px , @yellow 0%, @blue 50%, @orange 95%);
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* Choose Your Five */
+
+.fivee, .fiver {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  left: 0;
+  top: 0;
+  padding: 0 2em;
+  min-height: 240px;
+
+  .hand {
+    position: absolute;
+    width: 40%;
+    top: 20px;
+    right: 0;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.fiver {
+  top: 53%;
+  text-align: right;
+  background-color: @purple;
+
+  .hand {
+    left: 0;
+  }
+}
+
+
+/* Map */
+
+.map {
+  img {
+    width: 100%;
+  }
+}
+
+.user-wrapper {
+  h2 {
+    margin: 0;
+  }
+}
+
+
+
+
+
+
+
+
+

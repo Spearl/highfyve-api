@@ -1,3 +1,11 @@
+/*
+ __  __     __     ______     __  __        ______   __  __     __   __   ______     ______    
+/\ \_\ \   /\ \   /\  ___\   /\ \_\ \      /\  ___\ /\ \_\ \   /\ \ / /  /\  ___\   /\  ___\   
+\ \  __ \  \ \ \  \ \ \__ \  \ \  __ \     \ \  __\ \ \____ \  \ \ \'/   \ \  __\   \ \___  \  
+ \ \_\ \_\  \ \_\  \ \_____\  \ \_\ \_\     \ \_\    \/\_____\  \ \__|    \ \_____\  \/\_____\ 
+  \/_/\/_/   \/_/   \/_____/   \/_/\/_/      \/_/     \/_____/   \/_/      \/_____/   \/_____/ 
+                                                                                               
+*/
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
@@ -17,13 +25,15 @@ html *:after {
   -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
 body {
   background-color: #54c0e1;
   color: #072c2e;
   font: 16px/26px Helvetica, Helvetica Neue, Arial;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2em;
 }
 h1,
 h2,
@@ -42,7 +52,216 @@ a:hover {
   opacity: 0.8;
 }
 .title {
-  font-size: 30px;
-  font-weight: 300;
   letter-spacing: 1px;
+  margin: 0;
+}
+.container {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2em;
+  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0, 1.2, 1, 1.2), opacity 0.1s cubic-bezier(0, 1.2, 1, 1.2);
+          transition: transform 0.2s cubic-bezier(0, 1.2, 1, 1.2), opacity 0.1s cubic-bezier(0, 1.2, 1, 1.2);
+}
+.container {
+  height: 100%;
+}
+.hidden {
+  -webkit-transform: scale(0.8);
+      -ms-transform: scale(0.8);
+          transform: scale(0.8);
+  opacity: 0;
+  pointer-events: none;
+}
+.button {
+  background-image: url('../static/assets/btn-wide-outline.png');
+  background-size: cover;
+  width: 492px;
+  height: 0;
+  padding-bottom: 29%;
+  cursor: pointer;
+  width: 100%;
+  -webkit-transition: -webkit-transform 0.1s cubic-bezier(0, 1.2, 1, 1.2), opacity 0.1s cubic-bezier(0, 1.2, 1, 1.2);
+          transition: transform 0.1s cubic-bezier(0, 1.2, 1, 1.2), opacity 0.1s cubic-bezier(0, 1.2, 1, 1.2);
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+  text-align: center;
+}
+.button.enter {
+  position: relative;
+  top: 35%;
+}
+.button .button-inner {
+  background-image: url('../static/assets/btn-wide-fill.png');
+  background-size: 100% 500%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.button .button-inner.white {
+  background-position: 0 0;
+}
+.button .button-inner.orange {
+  background-position: 0 50%;
+}
+.button .button-inner.purple {
+  background-position: 0 75%;
+}
+.button .button-inner.blue {
+  background-position: 0 100%;
+}
+.button .button-inner.yellow {
+  background-position: 0 25%;
+}
+.button .button-inner.yellow h2 {
+  color: black;
+}
+.button .button-inner h2 {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+/* Welcome */
+.welcome-container {
+  height: 100%;
+}
+.welcome-container img {
+  max-width: 100%;
+}
+.welcome-container .logo {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  z-index: -1;
+  -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.welcome-container .logo.hidden {
+  -webkit-transform: scale(0.2);
+      -ms-transform: scale(0.2);
+          transform: scale(0.2);
+  opacity: 0;
+}
+.hand-left,
+.hand-right {
+  position: absolute;
+  -webkit-transition: -webkit-transform .75s linear;
+          transition: transform .75s linear;
+  top: 50%;
+  width: 60%;
+}
+.hand-left.high-five-me-bro,
+.hand-right.high-five-me-bro {
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+.hand-left {
+  left: 0;
+  -webkit-transform: translate(-100%, -50%);
+      -ms-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
+}
+.hand-right {
+  right: 0;
+  -webkit-transform: translate(100%, -50%);
+      -ms-transform: translate(100%, -50%);
+          transform: translate(100%, -50%);
+}
+/* Waiting Icons */
+.waiting {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.waiting.centered {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+.waiting .gradient {
+  -webkit-animation: spin 1.5s infinite linear;
+          animation: spin 1.5s infinite linear;
+  background-image: -webkit-radial-gradient(45px 45px, ellipse farthest-corner, #ffcf2c 0%, #9b89d3 50%, #ff981f 95%);
+  background-image: radial-gradient(ellipse farthest-corner at 45px 45px, #ffcf2c 0%, #9b89d3 50%, #ff981f 95%);
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 120%;
+  height: 120%;
+  z-index: -1;
+}
+.waiting.purple .gradient {
+  background-image: -webkit-radial-gradient(45px 45px, ellipse farthest-corner, #ffcf2c 0%, #54c0e1 50%, #ff981f 95%);
+  background-image: radial-gradient(ellipse farthest-corner at 45px 45px, #ffcf2c 0%, #54c0e1 50%, #ff981f 95%);
+}
+.waiting img {
+  display: block;
+  width: 100%;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+/* Choose Your Five */
+.fivee,
+.fiver {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  left: 0;
+  top: 0;
+  padding: 0 2em;
+  min-height: 240px;
+}
+.fivee .hand,
+.fiver .hand {
+  position: absolute;
+  width: 40%;
+  top: 20px;
+  right: 0;
+}
+.fivee .hand img,
+.fiver .hand img {
+  max-width: 100%;
+}
+.fiver {
+  top: 53%;
+  text-align: right;
+  background-color: #9b89d3;
+}
+.fiver .hand {
+  left: 0;
+}
+/* Map */
+.map img {
+  width: 100%;
+}
+.user-wrapper h2 {
+  margin: 0;
 }
