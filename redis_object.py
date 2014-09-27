@@ -25,7 +25,7 @@ class RedisObject(object):
     def __getitem__(self, key):
         return self.data.get(key)
 
-    def __setitem(self, key, value):
+    def __setitem__(self, key, value):
         self.data[key] = value
 
     def save(self):

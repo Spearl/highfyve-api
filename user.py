@@ -15,6 +15,10 @@ class User(RedisObject):
         return "%s:%s" % ('u', self['username'])
 
     @property
+    def ratings_key(self):
+        return "%s:%s" % ('ratings', self['username'])
+
+    @property
     def wait_list_format(self):
         list_format = {
             "username": self['username'],
@@ -29,8 +33,20 @@ class User(RedisObject):
         match['photo'] = self['photo']
         return match
 
+    @property
+    def status_format(self):
+        return {"status": self['status']}
+
     def save_token(self):
         self.redis.set(self['token'], self['username'])
+
+    def rate(self, rating):
+        try:
+            rating = int(rating)
+        except ValueError:
+            return
+
+        self.redis.sadd(self.ratings_key, rating)
 
     @classmethod
     def get_user_from_token(cls, token):

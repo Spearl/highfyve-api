@@ -101,6 +101,7 @@ def fiver():
         if fivee_distance is None or fivee_distance > MAX_FYVE_DISTANCE:
             # No matches
             user['match'] = "..."
+            user['status'] = "waiting"
             user.save()
             User.insert_into_wait_list('fiver', json.dumps(user.wait_list_format))
             return jsonify({})
@@ -110,7 +111,11 @@ def fiver():
         fivee_match = User(json.loads(fivee_match)['username'])
         fivee_match.load()
         fivee_match['match'] = user['username']
+        fivee_match['status'] = "matched"
         fivee_match.save()
+        user['match'] = fivee_match['username']
+        user['status'] = "matched"
+        user.save()
 
         return jsonify(fivee_match.match_format)
 
@@ -146,6 +151,7 @@ def fivee():
         if fiver_distance is None or fiver_distance > MAX_FYVE_DISTANCE:
             # No matches
             user['match'] = "..."
+            user['status'] = "waiting"
             user.save()
             User.insert_into_wait_list('fivee', json.dumps(user.wait_list_format))
             return jsonify({})
@@ -154,7 +160,11 @@ def fivee():
         User.remove_from_wait_list('fiver', fiver_match)
         fiver_match = User(json.loads(fiver_match)['username'])
         fiver_match['match'] = user['username']
+        fiver_match['status'] = "matched"
         fiver_match.save()
+        user['match'] = fiver_match['username']
+        user['status'] = "matched"
+        user.save()
 
         return jsonify(fiver_match.match_format)
 
@@ -162,6 +172,7 @@ def fivee():
         # Checking in for a match
         if user['match'] == "...":
             # Still waiting
+            assert user['status'] == "waiting"
             return jsonify({})
         # We have a match!
         match_user = User(user['match'])
@@ -169,16 +180,49 @@ def fivee():
         return jsonify(match_user.match_format)
 
 
+@app.route('/status', methods=['GET'])
+def status():
+    user = User.get_user_from_token(request.form['token'])
+    user.load()
+
+    return jsonify(user.status_format)
+
+
 @app.route('/bail', methods=['POST'])
 def bail():
-    pass
+    user = User.get_user_from_token(request.form['token'])
+    user.load()
+
+    user_left_hanging = User(user['match'])
+    user_left_hanging.load()
+    user_left_hanging['status'] = "left hanging"
+    user_left_hanging.save()
+
+    user['status'] = "cancelled"
+    user.save()
+
+    return jsonify({})
 
 
 @app.route('/successawesome', methods=['POST'])
 def success():
-    pass
+    user = User.get_user_from_token(request.form['token'])
+    user.load()
+    user_fyved = User(user['match'])
+    user_fyved.load()
+
+    # Fuck yeah!
+    user['status'] = "fyved"
+    user.save()
+    user_fyved['status'] = "fyved"
+    user_fyved.save()
+
+    return jsonify({})
 
 
 @app.route('/rating', methods=['POST'])
 def rate():
-    pass
+    rated_user = User(request.form['username'])
+    rated_user.rate(request.form['rating'])
+
+    return jsonify({})
