@@ -51,7 +51,8 @@ class User(RedisObject):
 
     @classmethod
     def get_user_from_token(cls, token):
-        return cls(cls.get_redis().get(token))
+        username = cls.get_redis().get(token)
+        return cls(username) if username else None
 
     @classmethod
     def get_wait_list(cls, list_key):
