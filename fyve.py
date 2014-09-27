@@ -77,11 +77,11 @@ def fyve():
 
 @app.route('/fiver', methods=['GET', 'POST'])
 def fiver():
-    user = User.get_user_from_token(request.form['token'])
-    if not user:
-        abort(404)
-    user.load()
     if request.method == 'POST':
+        user = User.get_user_from_token(request.form['token'])
+        if not user:
+            abort(404)
+        user.load()
         user['lat'] = request.form['lat']
         user['lng'] = request.form['lng']
         user.save()
@@ -117,6 +117,10 @@ def fiver():
         return jsonify(fivee_match.match_format)
 
     else:
+        user = User.get_user_from_token(request.args['token'])
+        if not user:
+            abort(404)
+        user.load()
         # Checking in for match
         if user['match'] == "...":
             # Still waiting
@@ -129,11 +133,11 @@ def fiver():
 
 @app.route('/fivee', methods=['GET', 'POST'])
 def fivee():
-    user = User.get_user_from_token(request.form['token'])
-    if not user:
-        abort(404)
-    user.load()
     if request.method == 'POST':
+        user = User.get_user_from_token(request.form['token'])
+        if not user:
+            abort(404)
+        user.load()
         user['lat'] = request.form['lat']
         user['lng'] = request.form['lng']
         user.save()
@@ -168,6 +172,10 @@ def fivee():
         return jsonify(fiver_match.match_format)
 
     else:
+        user = User.get_user_from_token(request.args['token'])
+        if not user:
+            abort(404)
+        user.load()
         # Checking in for a match
         if user['match'] == "...":
             # Still waiting
