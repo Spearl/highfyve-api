@@ -5,6 +5,7 @@ import redis
 from flask import request
 
 from make_app import make_json_app
+from user import User
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
