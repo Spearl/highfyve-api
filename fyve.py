@@ -78,6 +78,8 @@ def fyve():
 @app.route('/fiver', methods=['GET', 'POST'])
 def fiver():
     user = User.get_user_from_token(request.form['token'])
+    if not user:
+        abort(404)
     user.load()
     if request.method == 'POST':
         user['lat'] = request.form['lat']
@@ -128,6 +130,8 @@ def fiver():
 @app.route('/fivee', methods=['GET', 'POST'])
 def fivee():
     user = User.get_user_from_token(request.form['token'])
+    if not user:
+        abort(404)
     user.load()
     if request.method == 'POST':
         user['lat'] = request.form['lat']
@@ -178,6 +182,8 @@ def fivee():
 @app.route('/status', methods=['GET'])
 def status():
     user = User.get_user_from_token(request.form['token'])
+    if not user:
+        abort(404)
     user.load()
 
     return jsonify(user.status_format)
@@ -186,6 +192,8 @@ def status():
 @app.route('/bail', methods=['POST'])
 def bail():
     user = User.get_user_from_token(request.form['token'])
+    if not user:
+        abort(404)
     user.load()
 
     user_left_hanging = User(user['match'])
@@ -202,6 +210,8 @@ def bail():
 @app.route('/successawesome', methods=['POST'])
 def success():
     user = User.get_user_from_token(request.form['token'])
+    if not user:
+        abort(404)
     user.load()
     user_fyved = User(user['match'])
     user_fyved.load()
