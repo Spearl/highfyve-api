@@ -48,8 +48,8 @@ Fyve.Views.welcome = function () {
 Fyve.Views.chooseYourFyve = function () {
   return (
     '<div class="fivee">' +
-      '<h1>Fyver</h1>' +
-      '<p>Wait to receive<br>an epic high fyve.</p>' +
+      '<h1>Fyvee</h1>' +
+      '<p>Receive<br>an epic high fyve.</p>' +
       '<div class="hand"><img src="static/assets/intro-right.png"></div>' +
       '<div class="button" data-next="true" data-role="fivee"><div class="button-inner yellow"><h2>Go</h2></div></div>' +
     '</div>' +
