@@ -19,7 +19,7 @@ app.redis = redis.from_url(redis_url)
 
 @app.route('/')
 def hello():
-    return "high fyve! "*1000
+    return "high fyve! "*5000
 
 
 @app.route('/auth', methods=['POST'])
