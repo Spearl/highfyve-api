@@ -3,7 +3,7 @@ import os
 import redis
 
 from flask import request, jsonify
-from flask_oauth import Oauth
+from flask_oauth import OAuth
 
 from make_app import make_json_app
 from user import User
@@ -17,7 +17,7 @@ app = make_json_app(__name__)
 redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 app.redis = redis.from_url(redis_url)
 
-twitter = Oauth().remote_app('twitter',
+twitter = OAuth().remote_app('twitter',
     base_url='https://api.twitter.com/1/',
     request_token_url='https://api.twitter.com/oauth/request_token',
     access_token_url='https://api.twitter.com/oauth/access_token',
