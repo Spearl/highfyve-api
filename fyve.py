@@ -58,7 +58,7 @@ def login():
     password = request.form['password']
     user = User(username)
     if not user.exists:
-        user['api_key'] = uuid.uuid4().replace('-','')
+        user['api_key'] = str(uuid.uuid4()).replace('-','')
         user['password'] = password
         user['photo'] = request.form['photo']
         user.save()
