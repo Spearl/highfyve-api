@@ -6,10 +6,10 @@ log = logging.getLogger(__name__)
 
 
 class RedisObject(object):
+
     def __init__(self):
         self.data = {}
-        self.redis = flask.current_app.redis
-    
+
     @property
     def key(self):
         raise NotImplementedError
@@ -17,6 +17,10 @@ class RedisObject(object):
     @property
     def exists(self):
         return self.redis.exists(self.key)
+
+    @property
+    def redis(self):
+        return self.get_redis()
 
     def __getitem__(self, key):
         return self.data.get(key)
@@ -29,3 +33,7 @@ class RedisObject(object):
 
     def load(self):
         self.data = self.redis.hgetall(self.key)
+
+    @classmethod
+    def get_redis(cls):
+        return flask.current_app.redis

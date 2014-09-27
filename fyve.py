@@ -1,8 +1,9 @@
 import logging
 import os
 import redis
+import uuid
 
-from flask import request, jsonify, url_for
+from flask import request, jsonify, url_for, render_template, abort, json
 from flask_oauth import OAuth
 
 from make_app import make_json_app
@@ -17,45 +18,59 @@ app = make_json_app(__name__)
 redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 app.redis = redis.from_url(redis_url)
 
-twitter = OAuth().remote_app('twitter',
-    base_url='https://api.twitter.com/1/',
-    request_token_url='https://api.twitter.com/oauth/request_token',
-    access_token_url='https://api.twitter.com/oauth/access_token',
-    authorize_url='https://api.twitter.com/oauth/authenticate',
-    consumer_key=TWITTER_API_KEY,
-    consumer_secret=TWITTER_API_SECRET
-)
+MAX_FYVE_DISTANCE = 0.011
 
-@app.route('/login')
+# twitter = OAuth().remote_app('twitter',
+#     base_url='https://api.twitter.com/1/',
+#     request_token_url='https://api.twitter.com/oauth/request_token',
+#     access_token_url='https://api.twitter.com/oauth/access_token',
+#     authorize_url='https://api.twitter.com/oauth/authenticate',
+#     consumer_key=TWITTER_API_KEY,
+#     consumer_secret=TWITTER_API_SECRET
+# )
+
+# @app.route('/login')
+# def login():
+#     return twitter.authorize(callback=url_for('oauth_authorized',
+#         next=request.args.get('next') or request.referrer or None))
+
+# @app.route('/oauth-authorized')
+# @twitter.authorized_handler
+# def oauth_authorized(resp):
+#     next_url = request.args.get('next') or url_for('index')
+#     if resp is None:
+#         flash(u'You denied the request to sign in.')
+#         return redirect(next_url)
+
+#     session['twitter_token'] = (
+#         resp['oauth_token'],
+#         resp['oauth_token_secret']
+#     )
+#     session['twitter_user'] = resp['screen_name']
+
+#     flash('You were signed in as %s' % resp['screen_name'])
+#     return redirect(next_url)
+
+@app.route('/login', methods=['POST'])
 def login():
-    return twitter.authorize(callback=url_for('oauth_authorized',
-        next=request.args.get('next') or request.referrer or None))
-
-@app.route('/oauth-authorized')
-@twitter.authorized_handler
-def oauth_authorized(resp):
-    next_url = request.args.get('next') or url_for('index')
-    if resp is None:
-        flash(u'You denied the request to sign in.')
-        return redirect(next_url)
-
-    session['twitter_token'] = (
-        resp['oauth_token'],
-        resp['oauth_token_secret']
-    )
-    session['twitter_user'] = resp['screen_name']
-
-    flash('You were signed in as %s' % resp['screen_name'])
-    return redirect(next_url)
+    username = request.form['username']
+    password = request.form['password']
+    user = User(username)
+    if not user.exists:
+        user['api_key'] = uuid.uuid4().replace('-','')
+        user['password'] = password
+        user['photo'] = request.form['photo']
+        user.save()
+        user.save_token()
+    else:
+        user.load()
+        if password != user['password']:
+            abort(401)
+    return jsonify({'api_key': user['api_key']})
 
 @app.route('/')
 def hello():
-    return "high fyve! "*5000
-
-
-@app.route('/auth', methods=['POST'])
-def auth():
-    pass
+    return render_template('index.html')
 
 
 @app.route('/user', methods=['GET'])
@@ -65,10 +80,47 @@ def user_info():
 
 @app.route('/fiver', methods=['GET', 'POST'])
 def fiver():
+    user = User.get_user_from_token(request.form['token'])
+    user.load()
     if request.method == 'POST':
-        pass
+        user['lat'] = request.form['lat']
+        user['lng'] = request.form['lng']
+        user.save()
+        fivee_wait_list = User.get_wait_list('fivee')
+        fivee_match = None
+        fivee_distance = None
+        for str_fivee in fivee_wait_list:
+            fivee = json.loads(str_fivee)
+            distance = user.distance(fivee['lat'], fivee['lng'])
+            if fivee_distance is None or distance < fivee_distance:
+                fivee_distance = distance
+                fivee_match = str_fivee
+
+        if fivee_distance is None or fivee_distance > MAX_FYVE_DISTANCE:
+            # No matches
+            user['match'] = "..."
+            user.save()
+            User.insert_into_wait_list('fiver', json.dumps(user.wait_list_format))
+            return jsonify({})
+
+        # We found a valid match!
+        User.remove_from_wait_list('fivee', fivee_match)
+        fivee_match = User(json.loads(fivee_match)['username'])
+        fivee_match.load()
+        fivee_match['match'] = user['username']
+        fivee_match.save()
+
+        return jsonify(fivee_match.match_format)
+
     else:
-        pass
+        # Checking in for match
+        if user['match'] == "...":
+            # Still waiting
+            return jsonify({})
+        # We have a match!
+        match_user = User(user['match'])
+        match_user.load()
+        return jsonify(match_user.match_format)
 
 
 @app.route('/fivee', methods=['GET', 'POST'])

@@ -1,0 +1,58 @@
+
+@yellow: #ffcf2c;
+@orange: #ff981f;
+@blue:   #54c0e1;
+@purple: #9b89d3;
+@black:  #072c2e;
+@white:  #fff;
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+html {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  line-height: 1.4;
+}
+
+html *, html *:before, html *:after {
+  -moz-box-sizing: inherit;
+       box-sizing: inherit;
+}
+
+body {
+  background-color: @blue;
+  color: @black;
+  font: 16px/26px Helvetica, Helvetica Neue, Arial;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+h1, h2, h3, h4 {
+  color: @white;
+  font-family: 'Indie Flower';
+}
+
+a {
+  color: @white;
+  text-decoration: none;
+  transition: opacity 0.1s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
