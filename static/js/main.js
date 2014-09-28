@@ -17,8 +17,7 @@ $(function () {
     Fyve.Views.chooseYourFyve,
     Fyve.Views.soAlone,
     Fyve.Views.readyTofyve,
-    Fyve.Views.niceBro,
-    Fyve.Views.rateHighFyve
+    Fyve.Views.niceBro
   ];
   var wrapper = $('#high-fyve-container');
   var transitionDuration = parseInt(wrapper.css('transitionDuration').replace(/0.|s|,/g, '').charAt(0), 10) * 100;
@@ -80,37 +79,9 @@ $(function () {
       changeState(route[current]);
     });
 
-    if ($('.login-container').length > 0) {
-      $('.submit').on('click', function (e) {
-        var userData = {
-          username: $('.username').val(),
-          password: $('.password').val(),
-          photo: $('.photo').val()
-        };
-
-        $.ajax({
-          type: 'POST',
-          data: userData,
-          url: '/login',
-          success: function (response) {
-            console.log(response);
-            nextState();
-          }
-        });
-      });
-    }
-
     animations();
 
     if (current == 2) {
-      setTimeout(function () {
-        current++;
-      }, 2000);
-    }
-
-    // Switch to Rate Screen after 4 seconds on lame/sweet
-
-    if (current == 4) {
       setTimeout(function () {
         current++;
         console.log(route[current]);
@@ -118,18 +89,13 @@ $(function () {
       }, 2000);
     }
 
-    // if ($('.refresh') && current == 4) {
-    //   current = 0;
+    if ($('.refresh') && current == 4) {
+      current = 0;
 
-    //   setTimeout(function () {
-    //     changeState(route[current]);
-    //   }, 6000);
-    // }
-  }
-
-  function nextState () {
-    current++;
-    changeState(route[current]);
+      setTimeout(function () {
+        changeState(route[current]);
+      }, 6000);
+    }
   }
 
   function animations () {
