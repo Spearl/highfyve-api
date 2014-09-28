@@ -85,11 +85,13 @@ def fiver():
         user = User.get_user_from_token(request.form['token'])
         if not user:
             abort(404)
-        log.info("User %s want to be a fiver", user['username'])
         user.load()
         user['lat'] = request.form['lat']
         user['lng'] = request.form['lng']
+        if not user['lat'] or not user['lng']:
+            abort(400)
         user.save()
+        log.info("User %s want to be a fiver", user['username'])
         fivee_wait_list = User.get_wait_list('fivee')
         fivee_match = None
         fivee_distance = None
@@ -142,11 +144,13 @@ def fivee():
         user = User.get_user_from_token(request.form['token'])
         if not user:
             abort(404)
-        log.info("User %s want to be a fivee", user['username'])
         user.load()
         user['lat'] = request.form['lat']
         user['lng'] = request.form['lng']
+        if not user['lat'] or not user['lng']:
+            abort(400)
         user.save()
+        log.info("User %s want to be a fivee", user['username'])
         fiver_wait_list = User.get_wait_list('fiver')
         fiver_match = None
         fiver_distance = None
@@ -247,6 +251,8 @@ def rate():
     user = User.get_user_from_token(request.form['token'])
     if not user:
         abort(404)
+    if not request.form['username'] or not request.form['rating']:
+        abort(400)
     rated_user = User(request.form['username'])
     five_rating = request.form['rating']
     rated_user.rate(five_rating)
