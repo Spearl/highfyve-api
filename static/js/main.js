@@ -136,6 +136,7 @@ $(function () {
             var success = function (response) {
               clearInterval(interval);
               Fyve.partner = response;
+              Fyve.me = user;
               current++;
               changeState(route[current]);
             }
