@@ -94,7 +94,7 @@ $(function () {
 
       setTimeout(function () {
         changeState(route[current]);
-      }, 2000);
+      }, 6000);
     }
   }
 
@@ -120,7 +120,7 @@ $(function () {
         current++;
         slides.css('opacity', 0);
         slides.eq(current).css('opacity', 1);
-      }, 4000);
+      }, 2000);
     }
 
     // Welcome screen.

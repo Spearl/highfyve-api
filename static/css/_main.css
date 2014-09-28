@@ -304,3 +304,9 @@ a:hover {
 .user-wrapper h2 {
   margin: 0;
 }
+.flaming-hand img {
+  width: 100%;
+}
+.confirmation {
+  text-align: center;
+}
