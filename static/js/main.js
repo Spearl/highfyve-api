@@ -130,41 +130,41 @@ $(function () {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-          });
 
-var success = function (response) {
-          clearInterval(interval);
-          Fyve.partner = response;
-          current++;
-          changeState(route[current]);
-        }
-
-        $.ajax({
-          type: 'POST',
-          url: request,
-          data: user,
-          success: function (response) {
-            if (response.username) {
-              success(response);
-            } else {
-              interval = setInterval(function () {
-                $.ajax({
-                  type: 'GET',
-                  url: request,
-                  data: {
-                    token: userToken
-                  },
-                  success: function (response) {
-                    console.log(response);
-                    if (response.username) {
-                      success(response);
-                    }
-                  }
-                });
-              }, 1000);
+            var success = function (response) {
+              clearInterval(interval);
+              Fyve.partner = response;
+              current++;
+              changeState(route[current]);
             }
-          }
-        });
+
+            $.ajax({
+              type: 'POST',
+              url: request,
+              data: user,
+              success: function (response) {
+                if (response.username) {
+                  success(response);
+                } else {
+                  interval = setInterval(function () {
+                    $.ajax({
+                      type: 'GET',
+                      url: request,
+                      data: {
+                        token: userToken
+                      },
+                      success: function (response) {
+                        console.log(response);
+                        if (response.username) {
+                          success(response);
+                        }
+                      }
+                    });
+                  }, 1000);
+                }
+              }
+            });
+          });
         } else {
           console.error('screw you, your browser sucks.');
         }
