@@ -156,6 +156,7 @@ $(function () {
                 $.ajax({
                   type: 'GET',
                   url: '/status',
+                  token: userToken,
                   success: function (response) {
                     if (response.status == 'matched') {
                       return false;
