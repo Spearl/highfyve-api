@@ -123,19 +123,16 @@ $(function () {
           request = '/fiver';
         }
 
-        if(navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position){
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (position){
             user = {
               token: userToken,
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
           });
-        } else {
-          console.error('screw you, your browser sucks.');
-        }
 
-        var success = function (response) {
+var success = function (response) {
           clearInterval(interval);
           Fyve.partner = response;
           current++;
@@ -167,7 +164,10 @@ $(function () {
               }, 1000);
             }
           }
-        })
+        });
+        } else {
+          console.error('screw you, your browser sucks.');
+        }
       });
     }
 
