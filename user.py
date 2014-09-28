@@ -30,9 +30,13 @@ class User(RedisObject):
 
     @property
     def match_format(self):
-        match = self.wait_list_format
-        match['photo'] = self['photo']
-        return match
+        match_info = {
+            "username": self['username'],
+            "lat": self['lat'],
+            "lng": self['lng'],
+            "photo": self['photo']
+        }
+        return match_info
 
     @property
     def status_format(self):
