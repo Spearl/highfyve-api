@@ -102,12 +102,8 @@ Fyve.Views.soAlone = function () {
   @param fyveRole accepts either
     "fyver" or "fyvee".
 */
-Fyve.Views.readyTofyve = function (person) {
-  person = person || {
-    username: 'brian',
-    lat: '51.5033630',
-    lng: '-0.1276250'
-  };
+Fyve.Views.readyTofyve = function () {
+  var person = Fyve.partner;
 
   if (Fyve.role == 'fivee') {
     return (
