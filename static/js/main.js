@@ -108,7 +108,6 @@ $(function () {
 
     var roles = $('[data-role]');
     if (roles.length > 0) {
-      console.log(roles);
       roles.click(function () {
         current++;
         changeState(route[current]);
@@ -116,6 +115,7 @@ $(function () {
         Fyve.role = this.getAttribute('data-role');
         var request;
         var interval;
+        var user;
 
         if (Fyve.role == 'fivee') {
           request = '/fivee';
@@ -123,11 +123,17 @@ $(function () {
           request = '/fiver';
         }
 
-        var obj = {
-          token: userToken,
-          lat: '51.5033630',
-          lng: '-0.1276250'
-        };
+        if(navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position){
+            user = {
+              token: userToken,
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+          });
+        } else {
+          console.error('screw you, your browser sucks.');
+        }
 
         var success = function (response) {
           clearInterval(interval);
@@ -136,12 +142,10 @@ $(function () {
           changeState(route[current]);
         }
 
-        console.log(request);
-
         $.ajax({
           type: 'POST',
           url: request,
-          data: obj,
+          data: user,
           success: function (response) {
             if (response.username) {
               success(response);

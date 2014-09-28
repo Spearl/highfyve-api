@@ -103,6 +103,12 @@ Fyve.Views.soAlone = function () {
     "fyver" or "fyvee".
 */
 Fyve.Views.readyTofyve = function (person) {
+  person = person || {
+    username: 'brian',
+    lat: '51.5033630',
+    lng: '-0.1276250'
+  };
+
   if (Fyve.role == 'fivee') {
     return (
       '<div class="user-wrapper">' +
@@ -119,7 +125,7 @@ Fyve.Views.readyTofyve = function (person) {
       '</div>'
     );
   } else {
-    console.log('yuno');
+    return (
       '<div class="user-wrapper">' +
         '<h2>' + person.username + '</h2>' +
         '<p>' + person.lat + ', ' + person.lng + '</p>' +
@@ -127,6 +133,7 @@ Fyve.Views.readyTofyve = function (person) {
         '<div class="button" data-next="true" data-success="true"><div class="button-inner yellow"><h2>Nice, Bro!</h2></div></div>' +
         '<div class="button" data-next="true" data-success="false"><div class="button-inner orange"><h2>Left me Hanging</h2></div></div>' +
       '</div>'
+    );
   }
 };
 
