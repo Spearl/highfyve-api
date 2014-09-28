@@ -294,15 +294,29 @@ a:hover {
 .rate-title {
   text-align: center;
 }
+.rate-numbers {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
 .rate-container img {
   display: block;
   margin: 0 auto;
+  width: 100%;
+  height: auto;
 }
 .rate-number {
   display: inline-block;
-  width: 60px;
-  height: 100px;
-  margin: 20px;
+  width: 10%;
+  height: 50px;
+  background-size: 100px;
+  background-position: 33px;
 }
 .rate-1 {
   background-image: url('../assets/1sprite.png');
