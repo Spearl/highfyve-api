@@ -80,13 +80,31 @@ $(function () {
       changeState(route[current]);
     });
 
+    if ($('.login-container').length > 0) {
+      $('.submit').on('click', function (e) {
+        var userData = {
+          username: $('.username').val(),
+          password: $('.password').val(),
+          photo: $('.photo').val()
+        };
+
+        $.ajax({
+          type: 'POST',
+          data: userData,
+          url: '/login',
+          success: function (response) {
+            console.log(response);
+            nextState();
+          }
+        });
+      });
+    }
+
     animations();
 
     if (current == 2) {
       setTimeout(function () {
         current++;
-        console.log(route[current]);
-        changeState(route[current]);
       }, 2000);
     }
 
@@ -107,6 +125,11 @@ $(function () {
     //     changeState(route[current]);
     //   }, 6000);
     // }
+  }
+
+  function nextState () {
+    current++;
+    changeState(route[current]);
   }
 
   function animations () {
