@@ -68,7 +68,7 @@ $(function () {
       $('[data-success]').click(function () {
         Fyve.success = this.getAttribute('data-success');
 
-        if (Fyve.success === true) {
+        if (Fyve.success == "true") {
           $.ajax({
             type: 'POST',
             url: '/successawesome',
