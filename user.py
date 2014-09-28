@@ -1,5 +1,6 @@
 import logging
 import math
+from time import sleep
 
 from redis_object import RedisObject
 
@@ -60,14 +61,18 @@ class User(RedisObject):
 
     @classmethod
     def get_wait_list(cls, list_key):
+        while not cls.get_redis().setnx('waitlist', 'lock'):
+            sleep(0.1)
         return cls.get_redis().smembers(list_key)
 
     @classmethod
     def insert_into_wait_list(cls, list_key, value):
+        cls.get_redis().delete('waitlist')
         return cls.get_redis().sadd(list_key, value)
 
     @classmethod
     def remove_from_wait_list(cls, list_key, value):
+        cls.get_redis().delete('waitlist')
         return cls.get_redis().srem(list_key, value)
 
     def distance(self, lat, lng):
