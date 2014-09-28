@@ -117,9 +117,9 @@ $(function () {
         var request;
 
         if (Fyve.role == 'fivee') {
-          request = '/fiver';
-        } else {
           request = '/fivee';
+        } else {
+          request = '/fiver';
         }
 
         var obj = {
@@ -145,6 +145,7 @@ $(function () {
               success();
             } else {
               setInterval(function () {
+                console.log(request);
                 $.ajax({
                   type: 'GET',
                   url: request,
