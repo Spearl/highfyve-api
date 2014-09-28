@@ -156,7 +156,9 @@ $(function () {
                     token: userToken
                   },
                   success: function (response) {
-                    success(response);
+                    if (response.username) {
+                      success(response);
+                    }
                   }
                 });
               }, 1000);
