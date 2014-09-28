@@ -154,3 +154,22 @@ Fyve.Views.niceBro = function () {
   }
 }
 
+/*
+  Rate my dick pic
+  ================
+
+*/
+
+Fyve.Views.rateHighFyve = function () {
+  return (
+    '<h1 class="rate-title">Rate your Fyve</h1>' + 
+    '<div><ul class="rating-list">' +
+    '<li class="rate-flawless"><div class="button"><div class="button-inner white"><h2>Flawless</h2></div></div></li>' +
+    '<li class="rate-awesome"><div class="button"><div class="button-inner orange"><h2>Awesome</h2></div></div></li>' +
+    '<li class="rate-solid"><div class="button"><div class="button-inner yellow"><h2>Solid</h2></div></div></li>' +
+    '<li class="rate-fine"><div class="button"><div class="button-inner purple"><h2>Fine</h2></div></div></li>' +
+    '<li class="rate-weak"><div class="button"><div class="button-inner blue"><h2>Weak</h2></div></div></li>' +
+    '</ul></div>'
+    );
+}
+

@@ -276,6 +276,14 @@ a:hover {
 .fiver .hand {
   left: 0;
 }
+/* Rate your Fyve */
+.rating-list {
+  list-style: none;
+  padding: 0;
+}
+.rating-list li {
+  background-image: url('../assets/hand-number-color-sprite.png');
+}
 /* Map and Gallery */
 .gallery {
   height: 0;
