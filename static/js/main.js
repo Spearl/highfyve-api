@@ -115,6 +115,7 @@ $(function () {
 
         Fyve.role = this.getAttribute('data-role');
         var request;
+        var interval;
 
         if (Fyve.role == 'fivee') {
           request = '/fivee';
@@ -128,7 +129,9 @@ $(function () {
           lng: '-0.1276250'
         };
 
-        var success = function () {
+        var success = function (response) {
+          clearInterval(interval);
+          console.log('yay!!!!!');
           Fyve.partner = response;
           current++;
           changeState(route[current]);
@@ -142,9 +145,9 @@ $(function () {
           data: obj,
           success: function (response) {
             if (response.username) {
-              success();
+              success(response);
             } else {
-              setInterval(function () {
+              interval = setInterval(function () {
                 console.log(request);
                 $.ajax({
                   type: 'GET',
@@ -153,7 +156,7 @@ $(function () {
                     token: userToken
                   },
                   success: function (response) {
-                    console.log(response);
+                    success(response);
                   }
                 });
               }, 1000);
