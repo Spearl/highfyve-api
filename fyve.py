@@ -67,11 +67,13 @@ def login():
         user.load()
         if password != user['password']:
             abort(401)
+    log.info("User %s logged in", username)
     return jsonify({'token': user['token']})
 
 
 @app.route('/')
 def fyve():
+    log.info("Homepage request")
     return render_template('index.html')
 
 
@@ -81,6 +83,7 @@ def fiver():
         user = User.get_user_from_token(request.form['token'])
         if not user:
             abort(404)
+        log.info("User %s want to be a fiver", user['username'])
         user.load()
         user['lat'] = request.form['lat']
         user['lng'] = request.form['lng']
@@ -137,6 +140,7 @@ def fivee():
         user = User.get_user_from_token(request.form['token'])
         if not user:
             abort(404)
+        log.info("User %s want to be a fivee", user['username'])
         user.load()
         user['lat'] = request.form['lat']
         user['lng'] = request.form['lng']
@@ -203,6 +207,7 @@ def bail():
     user = User.get_user_from_token(request.form['token'])
     if not user:
         abort(404)
+    log.info("User %s is bailing", user['username'])
     user.load()
 
     user_left_hanging = User(user['match'])
@@ -221,6 +226,7 @@ def success():
     user = User.get_user_from_token(request.form['token'])
     if not user:
         abort(404)
+    log.info("User %s is reporting a successful high five!", user['username'])
     user.load()
     user_fyved = User(user['match'])
     user_fyved.load()
@@ -240,6 +246,8 @@ def rate():
     if not user:
         abort(404)
     rated_user = User(request.form['username'])
-    rated_user.rate(request.form['rating'])
+    five_rating = request.form['rating']
+    rated_user.rate(five_rating)
+    log.info("User %s rated user %s with a %s", user['username'], rated_user['username'], five_rating)
 
     return jsonify({})
