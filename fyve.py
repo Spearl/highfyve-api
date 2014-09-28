@@ -86,6 +86,8 @@ def fiver():
         if not user:
             abort(404)
         user.load()
+        if user['status'] == 'waiting':
+            return jsonify({})
         user['lat'] = request.form['lat']
         user['lng'] = request.form['lng']
         if not user['lat'] or not user['lng']:
@@ -145,6 +147,8 @@ def fivee():
         if not user:
             abort(404)
         user.load()
+        if user['status'] == "waiting":
+            return jsonify({})
         user['lat'] = request.form['lat']
         user['lng'] = request.form['lng']
         if not user['lat'] or not user['lng']:
