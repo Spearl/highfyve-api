@@ -364,8 +364,31 @@ a:hover {
 .map img {
   max-width: 100%;
 }
-.user-wrapper h2 {
+.user-wrapper .user-header {
+  margin-bottom: 2em;
+}
+.user-wrapper .photo,
+.user-wrapper .text {
+  display: inline-block;
+  vertical-align: middle;
+}
+.user-wrapper .photo {
+  width: 35%;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 0;
+  padding-bottom: 35%;
+}
+.user-wrapper .photo img {
+  max-width: 100%;
+}
+.user-wrapper .map {
+  width: 100%;
+}
+.user-wrapper .text {
   margin: 0;
+  padding-left: 1em;
+  width: 65%;
 }
 .flaming-hand img {
   width: 100%;

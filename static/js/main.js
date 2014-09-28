@@ -236,7 +236,7 @@ $(function () {
 
     if (gallery.length > 0) {
       var current = 0;
-      var max = 2;
+      var max = 3;
       var slides = $('.slide');
 
       slides.eq(current).css('opacity', 1);
@@ -247,13 +247,13 @@ $(function () {
         }
 
         if (current == max - 1) {
-          $('.gallery').css('paddingBottom', '75%');
+          $('.gallery').css('paddingBottom', '0');
         }
 
         current++;
         slides.css('opacity', 0);
         slides.eq(current).css('opacity', 1);
-      }, 2000);
+      }, 4000);
     }
 
     // Welcome screen.

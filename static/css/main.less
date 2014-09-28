@@ -382,8 +382,36 @@ a {
 }
 
 .user-wrapper {
-  h2 {
+  .user-header {
+    margin-bottom: 2em;
+  }
+
+  .photo,
+  .text {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .photo {
+    width: 35%;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 35%;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .map {
+    width: 100%;
+  }
+
+  .text {
     margin: 0;
+    padding-left: 1em;
+    width: 65%;
   }
 }
 
