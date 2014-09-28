@@ -102,12 +102,12 @@ Fyve.Views.soAlone = function () {
   @param fyveRole accepts either
     "fyver" or "fyvee".
 */
-Fyve.Views.readyTofyve = function (fyveRole) {
+Fyve.Views.readyTofyve = function (person) {
   if (Fyve.role == 'fivee') {
     return (
       '<div class="user-wrapper">' +
-        '<h2>@foleyatwork</h2>' +
-        '<p>300ft away. Stay put and wait to be high fived.</p>' +
+        '<h2>' + person.username + '</h2>' +
+        '<p>' + person.lat + ', ' + person.lng + '</p>' +
         '<div class="gallery">' +
           '<div class="slide"><img src="static/assets/protip-stand-up.png"></div>' +
           '<div class="slide"><img src="static/assets/protip-arm-up.png"></div>' +
@@ -121,8 +121,8 @@ Fyve.Views.readyTofyve = function (fyveRole) {
   } else {
     console.log('yuno');
       '<div class="user-wrapper">' +
-        '<h2>@thefatling</h2>' +
-        '<p>300ft away.</p>' +
+        '<h2>' + person.username + '</h2>' +
+        '<p>' + person.lat + ', ' + person.lng + '</p>' +
         '<h3>Stay put. Your high five is on the way.</h3>' +
         '<div class="button" data-next="true" data-success="true"><div class="button-inner yellow"><h2>Nice, Bro!</h2></div></div>' +
         '<div class="button" data-next="true" data-success="false"><div class="button-inner orange"><h2>Left me Hanging</h2></div></div>' +

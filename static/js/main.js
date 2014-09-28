@@ -131,7 +131,6 @@ $(function () {
 
         var success = function (response) {
           clearInterval(interval);
-          console.log('yay!!!!!');
           Fyve.partner = response;
           current++;
           changeState(route[current]);
@@ -148,7 +147,6 @@ $(function () {
               success(response);
             } else {
               interval = setInterval(function () {
-                console.log(request);
                 $.ajax({
                   type: 'GET',
                   url: request,
@@ -156,6 +154,7 @@ $(function () {
                     token: userToken
                   },
                   success: function (response) {
+                    console.log(response);
                     if (response.username) {
                       success(response);
                     }
