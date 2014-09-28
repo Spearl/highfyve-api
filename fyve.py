@@ -58,6 +58,8 @@ def login():
     password = request.form['password']
     user = User(username)
     if not user.exists:
+        if not request.form['photo']:
+            abort(401)
         user['token'] = str(uuid.uuid4()).replace('-','')
         user['password'] = password
         user['photo'] = request.form['photo']
