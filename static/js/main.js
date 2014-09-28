@@ -88,13 +88,19 @@ $(function () {
           photo: $('.photo').val()
         };
 
+        console.log($('.username').val());
+
         $.ajax({
           type: 'POST',
           data: userData,
           url: '/login',
           success: function (response) {
-            current++;
-            changeState(route[current]);
+            console.log(response);
+
+            if (response.token) {
+              current++;
+              changeState(route[current]);
+            }
           }
         });
       });
