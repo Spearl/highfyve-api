@@ -127,9 +127,11 @@ $(function () {
           navigator.geolocation.getCurrentPosition(function (position){
             user = {
               token: userToken,
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
+              lat: '' + position.coords.latitude,
+              lng: '' + position.coords.longitude
             };
+
+            console.log(user);
 
             var success = function (response) {
               clearInterval(interval);
