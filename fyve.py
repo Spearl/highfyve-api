@@ -58,7 +58,7 @@ def login():
     password = request.form['password']
     user = User(username)
     if not user.exists:
-        user['api_key'] = str(uuid.uuid4()).replace('-','')
+        user['token'] = str(uuid.uuid4()).replace('-','')
         user['password'] = password
         user['photo'] = request.form['photo']
         user.save()
@@ -67,7 +67,7 @@ def login():
         user.load()
         if password != user['password']:
             abort(401)
-    return jsonify({'api_key': user['api_key']})
+    return jsonify({'token': user['token']})
 
 
 @app.route('/')
@@ -207,7 +207,7 @@ def bail():
 
     user_left_hanging = User(user['match'])
     user_left_hanging.load()
-    user_left_hanging['status'] = "left hanging"
+    user_left_hanging['status'] = "cancelled"
     user_left_hanging.save()
 
     user['status'] = "cancelled"
@@ -236,6 +236,9 @@ def success():
 
 @app.route('/rating', methods=['POST'])
 def rate():
+    user = User.get_user_from_token(request.form['token'])
+    if not user:
+        abort(404)
     rated_user = User(request.form['username'])
     rated_user.rate(request.form['rating'])
 
