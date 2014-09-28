@@ -189,7 +189,7 @@ Fyve.Views.rateHighFyve = function () {
           '<img id="rateImgFour" src="static/assets/4hand.gif">' +  
         '</div>' + 
         '<div class="rate-hide">' + 
-          '<img id="rateImgFour" src="static/assets/5hand.gif">' +  
+          '<img id="rateImgFive" src="static/assets/5hand.gif">' +  
         '</div>' + 
         '<div class="rate-numbers">' + 
           '<div class="rate-number rate-1"></div>' + 
