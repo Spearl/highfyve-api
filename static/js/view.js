@@ -29,13 +29,15 @@ Fyve.Views.welcome = function () {
       '<div class="hand-right"><img src="static/assets/intro-right.png"></div>' +
       '<div class="hand-left"><img src="static/assets/intro-left.png"></div>' +
       '<div class="logo hidden"><img src="static/assets/logo-stacked.png"></div>' +
-      '<form id="login-form">' +
-        '<input type="text" placeholder="username">' +
-        '<input type="password" placeholder="password">' +
-        '<input type="submit" class="button enter hidden" data-next="true">' +
-          '<div class="button-inner yellow"><h2>Login</h2></div>' +
-        '</input>' +
-      '</form>' +
+      '<div class="login-container">' +
+        '<form id="login-form">' +
+          '<input type="text" placeholder="username">' +
+          '<input type="password" placeholder="password">' +
+          '<input type="submit" class="button enter hidden" data-next="true">' +
+            '<div class="button-inner yellow"><h2>Login</h2></div>' +
+          '</input>' +
+        '</form>' +
+      '</div>' +
     '</div>'
   );
 };
