@@ -75,7 +75,7 @@ a:hover {
   pointer-events: none;
 }
 .button {
-  background-image: url('../assets/btn-wide-outline.png');
+  background-image: url('../../static/assets/btn-wide-outline.png');
   background-size: cover;
   width: 492px;
   height: 0;
@@ -94,7 +94,7 @@ a:hover {
   top: 35%;
 }
 .button .button-inner {
-  background-image: url('../assets/btn-wide-fill.png');
+  background-image: url('../../static/assets/btn-wide-fill.png');
   background-size: 100% 500%;
   position: absolute;
   width: 100%;
@@ -208,6 +208,24 @@ a:hover {
   display: block;
   width: 100%;
 }
+.waiting .hand {
+  position: absolute;
+  overflow: hidden;
+  background-image: url('../../static/assets/hand-default-color.png');
+  background-size: 100% 200%;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.waiting .hand.yellow {
+  background-position: 0 0;
+}
+.waiting .hand.orange {
+  background-position: 0 50%;
+}
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -258,9 +276,30 @@ a:hover {
 .fiver .hand {
   left: 0;
 }
-/* Map */
-.map img {
+/* Map and Gallery */
+.gallery {
+  height: 0;
+  padding-bottom: 150%;
+  overflow: hidden;
+  position: relative;
+  /*margin-left: -2em;
+  margin-right: -2em;*/
+}
+.gallery .slide {
+  background-color: #54c0e1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition: opacity 0.6s ease;
+          transition: opacity 0.6s ease;
+}
+.gallery .slide img {
   width: 100%;
+}
+.map img {
+  max-width: 100%;
 }
 .user-wrapper h2 {
   margin: 0;

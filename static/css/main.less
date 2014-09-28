@@ -88,7 +88,7 @@ a {
 }
 
 .button {
-  background-image: url('../static/assets/btn-wide-outline.png');
+  background-image: url('../../static/assets/btn-wide-outline.png');
   background-size: cover;
   width: 492px;
   height: 0;
@@ -105,7 +105,7 @@ a {
   }
 
   .button-inner {
-    background-image: url('../static/assets/btn-wide-fill.png');
+    background-image: url('../../static/assets/btn-wide-fill.png');
     background-size: 100% 500%;
     position: absolute;
     width: 100%;
@@ -215,6 +215,20 @@ a {
     display: block;
     width: 100%;
   }
+
+  .hand {
+    position: absolute;
+    overflow: hidden;
+    background-image: url('../../static/assets/hand-default-color.png');
+    background-size: 100% 200%;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &.yellow { background-position: 0 0; }
+    &.orange { background-position: 0 50%; }
+  }
 }
 
 @keyframes spin {
@@ -257,11 +271,34 @@ a {
 }
 
 
-/* Map */
+/* Map and Gallery */
+
+.gallery {
+  height: 0;
+  padding-bottom: 150%;
+  overflow: hidden;
+  position: relative;
+  /*margin-left: -2em;
+  margin-right: -2em;*/
+
+  .slide {
+    background-color: @blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+
+    img {
+      width: 100%;
+    }
+  }
+}
 
 .map {
   img {
-    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -270,7 +307,6 @@ a {
     margin: 0;
   }
 }
-
 
 
 

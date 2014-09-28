@@ -49,13 +49,13 @@ Fyve.Views.chooseYourFyve = function () {
   return (
     '<div class="fivee">' +
       '<h1>Fyvee</h1>' +
-      '<p>Receive<br>an epic high fyve.</p>' +
+      '<p>Receive an epic<br>high five!</p>' +
       '<div class="hand"><img src="static/assets/intro-right.png"></div>' +
       '<div class="button" data-next="true" data-role="fivee"><div class="button-inner yellow"><h2>Go</h2></div></div>' +
     '</div>' +
     '<div class="fiver">' +
       '<h1>Fyver</h1>' +
-      "<p>Go give the world's most<br>epic high fyve.</p>" +
+      "<p>Go give the world's<br>most epic high five!</p>" +
       '<div class="hand"><img src="static/assets/intro-left.png"></div>' +
       '<div class="button" data-next="true" data-role="fiver"><div class="button-inner orange"><h2>Go</h2></div></div>' +
     '</div>'
@@ -72,7 +72,7 @@ Fyve.Views.chooseYourFyve = function () {
   high fyve.
 */
 Fyve.Views.soAlone = function () {
-  return '<div class="waiting centered"><div class="gradient"></div><img src="static/assets/waiting-blue.png"></div></div>';
+  return '<div class="waiting centered"><div class="hand"><img src="static/assets/hand-default-outline.png"></div><div class="gradient"></div><img src="static/assets/waiting-blue.png"></div></div>';
 };
 
 
@@ -101,7 +101,12 @@ Fyve.Views.readyTofyve = function (fyveRole) {
       '<div class="user-wrapper">' +
         '<h2>@foleyatwork</h2>' +
         '<p>300ft away. Stay put and wait to be high fived.</p>' +
-        '<div class="map"><img src="static/assets/map.png"></div>' +
+        '<div class="gallery">' +
+          '<div class="slide"><img src="static/assets/protip-stand-up.png"></div>' +
+          '<div class="slide"><img src="static/assets/protip-arm-up.png"></div>' +
+          '<div class="slide"><img src="static/assets/protip-smile.png?v2"></div>' +
+          '<div class="slide"><img src="static/assets/map.png"></div>' +
+        '</div>' +
         '<div class="button" data-next="true" data-success="true"><div class="button-inner yellow"><h2>Nice, Bro!</h2></div></div>' +
         '<div class="button" data-next="true" data-success="false"><div class="button-inner orange"><h2>Left me Hanging</h2></div></div>' +
       '</div>'

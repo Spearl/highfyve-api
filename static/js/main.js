@@ -99,6 +99,30 @@ $(function () {
   }
 
   function animations () {
+    var gallery = $('.gallery');
+
+    if (gallery.length > 0) {
+      var current = 0;
+      var max = 3;
+      var slides = $('.slide');
+
+      slides.eq(current).css('opacity', 1);
+      var interval = setInterval(function () {
+        if (current == max) {
+          clearInterval(interval);
+          return false;
+        }
+
+        if (current == max - 1) {
+          $('.gallery').css('paddingBottom', '75%');
+        }
+
+        current++;
+        slides.css('opacity', 0);
+        slides.eq(current).css('opacity', 1);
+      }, 4000);
+    }
+
     // Welcome screen.
     var handLeft = $('.hand-left');
     var handRight = $('.hand-right');
