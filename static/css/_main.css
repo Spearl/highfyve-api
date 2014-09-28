@@ -133,21 +133,35 @@ a:hover {
 .welcome-container img {
   max-width: 100%;
 }
-.welcome-container .logo {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translate(0, -50%);
-      -ms-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-  z-index: -1;
-  -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
-          transition: transform 0.3s ease, opacity 0.3s ease;
-}
 .welcome-container .logo.hidden {
   -webkit-transform: scale(0.2);
       -ms-transform: scale(0.2);
           transform: scale(0.2);
   opacity: 0;
+}
+.login-container {
+  -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.login-container.hidden {
+  -webkit-transform: scale(0.2);
+      -ms-transform: scale(0.2);
+          transform: scale(0.2);
+  opacity: 0;
+}
+.login-container .logo {
+  margin-bottom: 1em;
+}
+.login-container input {
+  width: 100%;
+  border: 0;
+  background-color: #ffffff;
+  padding: 1em;
+  margin-bottom: 1em;
+  opacity: 0.8;
+}
+.login-container input:focus {
+  opacity: 1;
 }
 .hand-left,
 .hand-right {

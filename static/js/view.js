@@ -28,13 +28,13 @@ Fyve.Views.welcome = function () {
     '<div class="welcome-container">' +
       '<div class="hand-right"><img src="static/assets/intro-right.png"></div>' +
       '<div class="hand-left"><img src="static/assets/intro-left.png"></div>' +
-      '<div class="logo hidden"><img src="static/assets/logo-stacked.png"></div>' +
-      '<div class="login-container">' +
+      '<div class="login-container hidden">' +
+        '<div class="logo"><img src="static/assets/logo-stacked.png"></div>' +
         '<form id="login-form">' +
           '<input type="text" placeholder="username" class="username">' +
           '<input type="password" placeholder="password" class="password">' +
           '<input type="text" placeholder="http://www.site.com/photo.jpg" class="photo">' +
-          '<div class="button enter hidden submit">' +
+          '<div class="button enter submit">' +
             '<div class="button-inner yellow"><h2>Login</h2></div>' +
           '</div>' +
         '</form>' +

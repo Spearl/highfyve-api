@@ -139,12 +139,7 @@ $(function () {
       }, 1500);
 
       setTimeout(function () {
-        $('.logo').css('transform', 'translate(0, -70%)');
-      }, 2000);
-
-      setTimeout(function () {
-        $('.button').removeClass('hidden');
-        $('.logo').removeClass('hidden');
+        $('.login-container').removeClass('hidden');
       }, 2500);
     }
   }

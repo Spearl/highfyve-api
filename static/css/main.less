@@ -145,12 +145,6 @@ a {
   }
 
   .logo {
-    position: relative;
-    top: 50%;
-    transform: translate(0, -50%);
-    z-index: -1;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-
     &.hidden {
       transform: scale(0.2);
       opacity: 0;
@@ -159,7 +153,29 @@ a {
 }
 
 .login-container {
+  transition: transform 0.3s ease, opacity 0.3s ease;
 
+  &.hidden {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+
+  .logo {
+    margin-bottom: 1em;
+  }
+
+  input {
+    width: 100%;
+    border: 0;
+    background-color: @white;
+    padding: 1em;
+    margin-bottom: 1em;
+    opacity: 0.8;
+
+    &:focus {
+      opacity: 1;
+    }
+  }
 }
 
 .hand-left,
