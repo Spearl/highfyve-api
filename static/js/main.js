@@ -17,7 +17,8 @@ $(function () {
     Fyve.Views.chooseYourFyve,
     Fyve.Views.soAlone,
     Fyve.Views.readyTofyve,
-    Fyve.Views.niceBro
+    Fyve.Views.niceBro,
+    Fyve.Views.rateHighFyve
   ];
   var wrapper = $('#high-fyve-container');
   var transitionDuration = parseInt(wrapper.css('transitionDuration').replace(/0.|s|,/g, '').charAt(0), 10) * 100;
@@ -109,13 +110,21 @@ $(function () {
       }, 2000);
     }
 
-    if ($('.refresh') && current == 4) {
-      current = 0;
-
+    if (current == 4) {
       setTimeout(function () {
+        current++;
+        console.log(route[current]);
         changeState(route[current]);
-      }, 6000);
+      }, 4000);
     }
+
+    // if ($('.refresh') && current == 4) {
+    //   current = 0;
+
+    //   setTimeout(function () {
+    //     changeState(route[current]);
+    //   }, 6000);
+    // }
   }
 
   function animations () {
