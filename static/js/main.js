@@ -79,6 +79,26 @@ $(function () {
       changeState(route[current]);
     });
 
+    if ($('.login-container').length > 0) {
+      $('.submit').on('click', function (e) {
+        var userData = {
+          username: $('.username').val(),
+          password: $('.password').val(),
+          photo: $('.photo').val()
+        };
+
+        $.ajax({
+          type: 'POST',
+          data: userData,
+          url: '/login',
+          success: function (response) {
+            current++;
+            changeState(route[current]);
+          }
+        });
+      });
+    }
+
     animations();
 
     if (current == 2) {
