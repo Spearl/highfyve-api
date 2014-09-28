@@ -189,7 +189,7 @@ def fivee():
 
 @app.route('/status', methods=['GET'])
 def status():
-    user = User.get_user_from_token(request.form['token'])
+    user = User.get_user_from_token(request.args['token'])
     if not user:
         abort(404)
     user.load()
