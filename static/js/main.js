@@ -236,7 +236,7 @@ $(function () {
 
     if (gallery.length > 0) {
       var current = 0;
-      var max = 3;
+      var max = 2;
       var slides = $('.slide');
 
       slides.eq(current).css('opacity', 1);
