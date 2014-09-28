@@ -58,13 +58,13 @@ Fyve.Views.chooseYourFyve = function () {
       '<h1>Fyvee</h1>' +
       '<p>Receive an epic<br>high five!</p>' +
       '<div class="hand"><img src="static/assets/intro-right.png"></div>' +
-      '<div class="button" data-next="true" data-role="fivee"><div class="button-inner yellow"><h2>Go</h2></div></div>' +
+      '<div class="button" data-role="fivee"><div class="button-inner yellow"><h2>Go</h2></div></div>' +
     '</div>' +
     '<div class="fiver">' +
       '<h1>Fyver</h1>' +
       "<p>Go give the world's<br>most epic high five!</p>" +
       '<div class="hand"><img src="static/assets/intro-left.png"></div>' +
-      '<div class="button" data-next="true" data-role="fiver"><div class="button-inner orange"><h2>Go</h2></div></div>' +
+      '<div class="button" data-role="fiver"><div class="button-inner orange"><h2>Go</h2></div></div>' +
     '</div>'
   );
 };
@@ -176,11 +176,29 @@ Fyve.Views.rateHighFyve = function () {
 
     '<h1 class="rate-title">Rate your Fyve</h1>' +
       '<div class="rate-container">' +
-         
-
+        '<div class="rate–show">' + 
+          '<img src="../assets/3hand.gif">' +  
+        '</div>' + 
+        '<div class="rate-hide">' + 
+          '<img src="../assets/3hand.gif">' +  
+        '</div>' + 
+        '<div class="rate–hide">' + 
+          '<img src="../assets/3hand.gif">' +  
+        '</div>' + 
+        '<div class="rate–hide">' + 
+          '<img src="../assets/3hand.gif">' +  
+        '</div>' + 
+        '<div class="rate–hide">' + 
+          '<img src="../assets/3hand.gif">' +  
+        '</div>' + 
+        '<div class="rate-numbers">' + 
+          '<div class="rate-1"></div>' + 
+          '<div class="rate-2"></div>' + 
+          '<div class="rate-3"></div>' + 
+          '<div class="rate-4"></div>' + 
+          '<div class-"rate-5"></div>' + 
+        '</div>' +
       '</div>' 
-
-
   );
 }
 
