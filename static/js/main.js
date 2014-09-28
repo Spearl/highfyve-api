@@ -106,8 +106,9 @@ $(function () {
       });
     }
 
-    var roles = $('[data-role="fivee"]');
+    var roles = $('[data-role]');
     if (roles.length > 0) {
+      console.log(roles);
       roles.click(function () {
         current++;
         changeState(route[current]);
