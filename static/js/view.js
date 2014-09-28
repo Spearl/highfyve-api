@@ -180,16 +180,16 @@ Fyve.Views.rateHighFyve = function () {
           '<img id="rateImgOne" src="static/assets/1hand.gif">' +  
         '</div>' + 
         '<div class="rate-hide">' + 
-          '<img id="rateImgOne" src="static/assets/2hand.gif">' +  
+          '<img id="rateImgTwo" src="static/assets/2hand.gif">' +  
         '</div>' + 
         '<div class="rate-hide">' + 
-          '<img id="rateImgOne" src="static/assets/3hand.gif">' +  
+          '<img id="rateImgThree" src="static/assets/3hand.gif">' +  
         '</div>' + 
         '<div class="rate-hide">' + 
-          '<img id="rateImgOne" src="static/assets/4hand.gif">' +  
+          '<img id="rateImgFour" src="static/assets/4hand.gif">' +  
         '</div>' + 
         '<div class="rate-hide">' + 
-          '<img id="rateImgOne" src="static/assets/5hand.gif">' +  
+          '<img id="rateImgFour" src="static/assets/5hand.gif">' +  
         '</div>' + 
         '<div class="rate-numbers">' + 
           '<div class="rate-number rate-1"></div>' + 
