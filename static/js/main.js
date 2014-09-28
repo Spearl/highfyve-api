@@ -109,29 +109,59 @@ $(function () {
     var roles = $('[data-role="fivee"]');
     if (roles.length > 0) {
       roles.click(function () {
+        current++;
+        changeState(route[current]);
+
         Fyve.role = this.getAttribute('data-role');
+        var request;
+
+        if (Fyve.role == 'fivee') {
+          request = '/fiver';
+        } else {
+          request = '/fivee';
+        }
+
+        var obj = {
+          token: userToken,
+          lat: '51.5033630',
+          lng: '-0.1276250'
+        };
+
+        var success = function () {
+          Fyve.partner = response;
+          current++;
+          changeState(route[current]);
+        }
+
+        console.log(request);
 
         $.ajax({
-          url: '/' + Fyve.role,
-          token: userToken,
-          lat: 51.5033630,
-          lng: -0.1276250,
+          type: 'POST',
+          url: request,
+          data: obj,
           success: function (response) {
-            console.log(response);
+            if (response.username) {
+              success();
+            } else {
+              setInterval(function () {
+                $.ajax({
+                  type: 'GET',
+                  url: request,
+                  data: {
+                    token: userToken
+                  },
+                  success: function (response) {
+                    console.log(response);
+                  }
+                });
+              }, 1000);
+            }
           }
         })
       });
     }
 
     animations();
-
-    if (current == 2) {
-      setTimeout(function () {
-        current++;
-        console.log(route[current]);
-        changeState(route[current]);
-      }, 2000);
-    }
 
     if (current == 4) {
       setTimeout(function () {
