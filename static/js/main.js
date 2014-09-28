@@ -100,14 +100,14 @@ $(function () {
       }, 2000);
     }
 
-  //   if ($('.refresh') && current == 4) {
-  //     current = 0;
+    // if ($('.refresh') && current == 4) {
+    //   current = 0;
 
-  //     setTimeout(function () {
-  //       changeState(route[current]);
-  //     }, 6000);
-  //   }
-  // }
+    //   setTimeout(function () {
+    //     changeState(route[current]);
+    //   }, 6000);
+    // }
+  }
 
   function animations () {
     var gallery = $('.gallery');
