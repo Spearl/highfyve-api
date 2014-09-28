@@ -218,6 +218,8 @@ $(function () {
     }); 
     }
 
+    $('.rate-one').on('click', changeRating)
+
     // if ($('.refresh') && current == 4) {
     //   current = 0;
 
@@ -228,7 +230,7 @@ $(function () {
   }
 
   function changeRating () {
-
+    console.log(this);
   }
 
   function animations () {
