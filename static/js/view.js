@@ -111,7 +111,7 @@ Fyve.Views.readyTofyve = function () {
       '<div class="user-wrapper">' +
         '<h2>Stay put, ' + person.username + ' is on the way!</h2>' +
         '<img src="' +
-          'https://maps.googleapis.com/maps/api/staticmap?center=' + me.lat + ',' + me.lng + '&size=600x300&markers=color:blue%7C' + me.lat + ',' + me.lng + '&markers=color:yellow%7Clabel:5%7C' + person.lat + ',' + person.lng +
+          'https://maps.googleapis.com/maps/api/staticmap?center=' + me.lat + ',' + me.lng + '&size=400x600&markers=color:blue%7C' + me.lat + ',' + me.lng + '&markers=color:yellow%7Clabel:5%7C' + person.lat + ',' + person.lng +
         '">' +
         '<div class="gallery">' +
           '<div class="slide"><img src="static/assets/protip-stand-up.png"></div>' +
