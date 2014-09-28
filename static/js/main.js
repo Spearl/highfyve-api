@@ -182,7 +182,28 @@ $(function () {
   }
 
   function changeRating () {
-    
+    var rateOne = $('.rate-one');
+    var rateTwo = $('.rate-two');
+    var rateThree = $('.rate-three');
+    var rateFour = $('.rate-four');
+    var rateFive = $('.rate-five');
+
+    rateOne.on('click', function(){
+      $('.rate-show').removeClass('rate-show').addClass('rate-hide');
+      
+    });
+    rateTwo.on('click', function(){
+
+    });
+    rateThree.on('click', function(){
+
+    });
+    rateFour.on('click', function(){
+
+    });
+    rateFive.on('click', function(){
+
+    });
   }
 
   function animations () {
