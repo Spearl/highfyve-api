@@ -23,9 +23,12 @@ $(function () {
   var wrapper = $('#high-fyve-container');
   var transitionDuration = parseInt(wrapper.css('transitionDuration').replace(/0.|s|,/g, '').charAt(0), 10) * 100;
   var loggedIn = false;
+  var userToken;
 
   // Bring in the welcome screen.
   changeState(Fyve.Views.welcome);
+
+  Fyve.changeState = changeState;
 
   function hideContent () {
     wrapper.css({
@@ -88,21 +91,35 @@ $(function () {
           photo: $('.photo').val()
         };
 
-        console.log($('.username').val());
-
         $.ajax({
           type: 'POST',
           data: userData,
           url: '/login',
           success: function (response) {
-            console.log(response);
-
             if (response.token) {
+              userToken = response.token;
               current++;
               changeState(route[current]);
             }
           }
         });
+      });
+    }
+
+    var roles = $('[data-role="fivee"]');
+    if (roles.length > 0) {
+      roles.click(function () {
+        Fyve.role = this.getAttribute('data-role');
+
+        $.ajax({
+          url: '/' + Fyve.role,
+          token: userToken,
+          lat: 51.5033630,
+          lng: -0.1276250,
+          success: function (response) {
+            console.log(response);
+          }
+        })
       });
     }
 
