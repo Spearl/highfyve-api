@@ -162,6 +162,7 @@ def fivee():
         # We found a match!
         User.remove_from_wait_list('fiver', fiver_match)
         fiver_match = User(json.loads(fiver_match)['username'])
+        fiver_match.load()
         fiver_match['match'] = user['username']
         fiver_match['status'] = "matched"
         fiver_match.save()
