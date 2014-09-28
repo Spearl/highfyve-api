@@ -65,6 +65,24 @@ $(function () {
   function bindUI () {
     var next = $('[data-next]');
 
+      $('[data-success]').click(function () {
+        Fyve.success = this.getAttribute('data-success');
+
+        if (Fyve.success === true) {
+          $.ajax({
+            type: 'POST',
+            url: '/successawesome',
+            token: userToken
+          });
+        } else {
+          $.ajax({
+            type: 'POST',
+            url: '/bail',
+            token: userToken
+          });
+        }
+      });
+
     next.on('click', function () {
       if (this.getAttribute('data-next') === 'false') {
         current = 0;
@@ -74,10 +92,6 @@ $(function () {
 
       if (this.getAttribute('data-role')) {
         Fyve.role = this.getAttribute('data-role');
-      }
-
-      if (this.getAttribute('data-success')) {
-        Fyve.success = this.getAttribute('data-success');
       }
 
       changeState(route[current]);
@@ -131,15 +145,34 @@ $(function () {
               lng: '' + position.coords.longitude
             };
 
-            console.log(user);
-
             var success = function (response) {
               clearInterval(interval);
               Fyve.partner = response;
               Fyve.me = user;
               current++;
               changeState(route[current]);
-            }
+
+              interval = setInterval(function () {
+                $.ajax({
+                  type: 'GET',
+                  url: '/status',
+                  success: function (response) {
+                    if (response.status == 'matched') {
+                      return false;
+                    }
+
+                    if (response.status == 'cancelled') {
+                      Fyve.success = 'false';
+                    } else {
+                      Fyve.success = 'true';
+                    }
+
+                    current++;
+                    changeState(route[current]);
+                  }
+                });
+              }, 2000);
+            };
 
             $.ajax({
               type: 'POST',
