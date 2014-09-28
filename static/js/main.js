@@ -181,6 +181,10 @@ $(function () {
     // }
   }
 
+  function changeRating () {
+    
+  }
+
   function animations () {
     var gallery = $('.gallery');
 

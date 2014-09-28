@@ -308,16 +308,16 @@ a:hover {
   background-image: url('../assets/1sprite.png');
 }
 .rate-2 {
-  background-image: url('../assets/1sprite.png');
+  background-image: url('../assets/2sprite.png');
 }
 .rate-3 {
-  background-image: url('../assets/1sprite.png');
+  background-image: url('../assets/3sprite.png');
 }
 .rate-4 {
-  background-image: url('../assets/1sprite.png');
+  background-image: url('../assets/4sprite.png');
 }
 .rate-5 {
-  background-image: url('../assets/1sprite.png');
+  background-image: url('../assets/5sprite.png');
 }
 .rate-hide {
   display: none;
