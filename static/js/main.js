@@ -224,41 +224,41 @@ $(function () {
       }, 4000);
     }
 
-    if (current == 5) {
-      var rateOne = $('.rate-one');
-      var rateTwo = $('.rate-two');
-      var rateThree = $('.rate-three');
-      var rateFour = $('.rate-four');
-      var rateFive = $('.rate-five');
+    $('.rate-1').on('click', function(){
+      console.log(this);
+      $('.rate-show').removeClass('rate-show').addClass('rate-hide');
+      $('#rateImgOne').addClass('rate-show');
+      $('#rateButton h2').html('Weak');
+    });
+    $('.rate-2').on('click', function(){
+      console.log(this);
+      $('.rate-show').removeClass('rate-show').addClass('rate-hide');
+      $('#rateImgTwo').addClass('rate-show');
+      $('#rateButton h2').html('Fine');
+    });
+    $('.rate-3').on('click', function(){
+      console.log(this);
+      $('.rate-show').removeClass('rate-show').addClass('rate-hide');
+      $('#rateImgThree').addClass('rate-show');
+      $('#rateButton h2').html('Solid');
+    });
+    $('.rate-4').on('click', function(){
+      console.log(this);
+      $('.rate-show').removeClass('rate-show').addClass('rate-hide');
+      $('#rateImgFour').addClass('rate-show');
+      $('#rateButton h2').html('Awesome');
+    });
+    $('.rate-5').on('click', function(){
+      console.log(this);
+      $('.rate-show').removeClass('rate-show').addClass('rate-hide');
+      $('#rateImgFive').addClass('rate-show');
+      $('#rateButton h2').html('Flawless');
+    });    
 
-      rateOne.on('click', function(){
-        $('.rate-show').removeClass('rate-show').addClass('rate-hide');
-        $('#rateImgOne').addClass('rate-show');
-        console.log('clicked');
-      });
-      rateTwo.on('click', function(){
-        $('.rate-show').removeClass('rate-show').addClass('rate-hide');
-        $('#rateImgTwo').addClass('rate-show');
-        console.log('clicked');
-      });
-      rateThree.on('click', function(){
-        $('.rate-show').removeClass('rate-show').addClass('rate-hide');
-        $('#rateImgThree').addClass('rate-show');
-        console.log('clicked');
-      });
-      rateFour.on('click', function(){
-        $('.rate-show').removeClass('rate-show').addClass('rate-hide');
-        $('#rateImgFour').addClass('rate-show');
-        console.log('clicked');
-      });
-      rateFive.on('click', function(){
-        $('.rate-show').removeClass('rate-show').addClass('rate-hide');
-        $('#rateImgFive').addClass('rate-show');
-        console.log('clicked');
-    }); 
-    }
-
-    $('.rate-one').on('click', changeRating)
+    $('#rateButton').on('click', function(){
+      current = 0;
+      changeState(Fyve.Views.welcome)
+    });   
 
     // if ($('.refresh') && current == 4) {
     //   current = 0;
@@ -269,9 +269,7 @@ $(function () {
     // }
   }
 
-  function changeRating () {
-    console.log(this);
-  }
+
 
   function animations () {
     var gallery = $('.gallery');

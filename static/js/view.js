@@ -196,20 +196,20 @@ Fyve.Views.rateHighFyve = function () {
 
     '<h1 class="rate-title">Rate your Fyve</h1>' +
       '<div class="rate-container">' +
-        '<div class="rate–show">' + 
-          '<img id="rateImgOne" src="static/assets/1hand.gif">' +  
+        '<div class="rate-show" id="rateImgOne">' + 
+          '<img src="static/assets/1hand.gif">' +  
         '</div>' + 
-        '<div class="rate-hide">' + 
-          '<img id="rateImgTwo" src="static/assets/2hand.gif">' +  
+        '<div class="rate-hide" id="rateImgTwo" >' + 
+          '<img src="static/assets/2hand.gif">' +  
         '</div>' + 
-        '<div class="rate-hide">' + 
-          '<img id="rateImgThree" src="static/assets/3hand.gif">' +  
+        '<div class="rate-hide" id="rateImgThree">' + 
+          '<img src="static/assets/3hand.gif">' +  
         '</div>' + 
-        '<div class="rate-hide">' + 
-          '<img id="rateImgFour" src="static/assets/4hand.gif">' +  
+        '<div class="rate-hide" id="rateImgFour">' + 
+          '<img src="static/assets/4hand.gif">' +  
         '</div>' + 
-        '<div class="rate-hide">' + 
-          '<img id="rateImgFive" src="static/assets/5hand.gif">' +  
+        '<div class="rate-hide" id="rateImgFive">' + 
+          '<img src="static/assets/5hand.gif">' +  
         '</div>' + 
         '<div class="rate-numbers">' + 
           '<div class="rate-number rate-1"></div>' + 
@@ -218,7 +218,7 @@ Fyve.Views.rateHighFyve = function () {
           '<div class="rate-number rate-4"></div>' + 
           '<div class="rate-number rate-5"></div>' + 
         '</div>' +
-        '<div class="button"><div class="button-inner orange"><h2>Rate</h2></div></div>' +
+        '<div class="button" id="rateButton"><div class="button-inner orange"><h2>Rate</h2></div></div>' +
       '</div>' 
   );
 }
