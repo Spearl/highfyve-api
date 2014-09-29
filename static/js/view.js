@@ -140,7 +140,7 @@ Fyve.Views.readyTofyve = function () {
             '<img src="' + person.photo + '">' +
           '</div><h2 class="text"> Go give ' + person.username + ' an epic high five!</h2>' +
         '</header>' +
-        '<img src="' +
+        '<img class="map" src="' +
           'https://maps.googleapis.com/maps/api/staticmap?center=' + me.lat + ',' + me.lng + '&size=400x400&markers=color:blue%7C' + me.lat + ',' + me.lng + '&markers=color:yellow%7Clabel:5%7C' + person.lat + ',' + person.lng +
         '">' +
         '<div class="button" data-success="true"><div class="button-inner yellow"><h2>Nice, Bro!</h2></div></div>' +

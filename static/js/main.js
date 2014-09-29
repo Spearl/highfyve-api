@@ -308,4 +308,17 @@ $(function () {
       }, 2500);
     }
   }
+
+  $(window).on('beforeunload', function () {
+   $.ajax({
+      type: 'POST',
+      url: '/bail',
+      data: {
+        token: userToken
+      },
+      success: function (response) {
+        console.log(response);
+      }
+    });
+ });
 });
