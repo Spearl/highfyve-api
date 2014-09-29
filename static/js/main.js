@@ -203,7 +203,6 @@ $(function () {
                         token: userToken
                       },
                       success: function (response) {
-                        console.log(response);
                         if (response.username) {
                           success(response);
                         }

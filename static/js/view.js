@@ -209,7 +209,7 @@ Fyve.Views.rateHighFyve = function () {
           '<div class="rate-number rate-4"></div>' + 
           '<div class="rate-number rate-5"></div>' + 
         '</div>' +
-        '<div class="button" id="rateButton"><div class="button-inner orange"><h2>Rate</h2></div></div>' +
+        '<div class="button" id="rateButton" data-next="false"><div class="button-inner orange"><h2>Rate</h2></div></div>' +
       '</div>' 
   );
 }
