@@ -256,7 +256,6 @@ $(function () {
       console.log(this);
       $('.rate-show').removeClass('rate-show').addClass('rate-hide');
       $('#rateImgFive').addClass('rate-show');
-      $('.button-inner').css('backgroundColor', 'white');
       $('#rateButton h2').html('Flawless');
     });
   }

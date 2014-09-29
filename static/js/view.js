@@ -187,7 +187,7 @@ Fyve.Views.rateHighFyve = function () {
   return (
     '<h1 class="rate-title">Rate your Fyve</h1>' +
       '<div class="rate-container">' +
-        '<div class="rate-show" id="rateImgOne">' + 
+        '<div class="rate-hide" id="rateImgOne">' + 
           '<img src="static/assets/1hand.gif">' +  
         '</div>' + 
         '<div class="rate-hide" id="rateImgTwo" >' + 
@@ -199,7 +199,7 @@ Fyve.Views.rateHighFyve = function () {
         '<div class="rate-hide" id="rateImgFour">' + 
           '<img src="static/assets/4hand.gif">' +  
         '</div>' + 
-        '<div class="rate-hide" id="rateImgFive">' + 
+        '<div class="rate-show" id="rateImgFive">' + 
           '<img src="static/assets/5hand.gif">' +  
         '</div>' + 
         '<div class="rate-numbers">' + 
