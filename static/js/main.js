@@ -96,7 +96,7 @@ $(function () {
 
     next.on('click', function () {
       if (this.getAttribute('data-next') === 'false') {
-        current = 0;
+        current = 1;
       } else {
         current++;
       }
@@ -163,7 +163,7 @@ $(function () {
               current++;
               changeState(route[current]);
 
-              interval = setInterval(function () {
+              var interval2 = setInterval(function () {
                 $.ajax({
                   type: 'GET',
                   url: '/status?token=' + userToken,
@@ -178,7 +178,7 @@ $(function () {
                       Fyve.success = 'true';
                     }
 
-                    clearInterval(interval);
+                    clearInterval(interval2);
 
                     current++;
                     changeState(route[current]);
@@ -258,20 +258,7 @@ $(function () {
       $('#rateImgFive').addClass('rate-show');
       $('.button-inner').css('backgroundColor', 'white');
       $('#rateButton h2').html('Flawless');
-    });    
-
-    $('#rateButton').on('click', function(){
-      current = 1;
-      changeState(route[current]);
-    });   
-
-    // if ($('.refresh') && current == 4) {
-    //   current = 0;
-
-    //   setTimeout(function () {
-    //     changeState(route[current]);
-    //   }, 6000);
-    // }
+    });
   }
 
 
