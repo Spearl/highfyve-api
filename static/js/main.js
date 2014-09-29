@@ -178,6 +178,8 @@ $(function () {
                       Fyve.success = 'true';
                     }
 
+                    clearInterval(interval);
+
                     current++;
                     changeState(route[current]);
                   }
@@ -223,7 +225,7 @@ $(function () {
     if (current == 4) {
       setTimeout(function () {
         current++;
-        changeState(Fyve.Views.rateHighFyve)
+        changeState(Fyve.Views.rateHighFyve);
       }, 4000);
     }
 
