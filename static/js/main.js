@@ -223,8 +223,7 @@ $(function () {
     if (current == 4) {
       setTimeout(function () {
         current++;
-        console.log(route[current]);
-        changeState(route[current]);
+        changeState(Fyve.Views.rateHighFyve)
       }, 4000);
     }
 
