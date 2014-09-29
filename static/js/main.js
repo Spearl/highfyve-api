@@ -67,18 +67,25 @@ $(function () {
 
       $('[data-success]').click(function () {
         Fyve.success = this.getAttribute('data-success');
+        console.log(userToken);
 
         if (Fyve.success == "true") {
           $.ajax({
             type: 'POST',
             url: '/successawesome',
-            token: userToken
+            token: userToken,
+            success: function (response) {
+              console.log(response);
+            }
           });
         } else {
           $.ajax({
             type: 'POST',
             url: '/bail',
-            token: userToken
+            token: userToken,
+            success: function (response) {
+              console.log(response);
+            }
           });
         }
       });
