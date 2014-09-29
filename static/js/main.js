@@ -73,7 +73,9 @@ $(function () {
           $.ajax({
             type: 'POST',
             url: '/successawesome',
-            token: userToken,
+            data: {
+              token: userToken
+            },
             success: function (response) {
               console.log(response);
             }
@@ -82,7 +84,9 @@ $(function () {
           $.ajax({
             type: 'POST',
             url: '/bail',
-            token: userToken,
+            data: {
+              token: userToken
+            },
             success: function (response) {
               console.log(response);
             }
