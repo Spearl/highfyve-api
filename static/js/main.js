@@ -48,7 +48,7 @@ $(function () {
 
   function changeState (view, args) {
     if (!window.view && !view) {
-      console.error('WTF, bro. That view does not exist.');
+      console.error('WTF, bro. ' + view + ' does not exist.');
       return false;
     }
 

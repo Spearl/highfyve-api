@@ -112,7 +112,7 @@ Fyve.Views.readyTofyve = function () {
   var person = Fyve.partner || test;
   var me = Fyve.me || test;
 
-  if (Fyve.role != 'fivee') {
+  if (Fyve.role == 'fivee') {
     return (
       '<div class="user-wrapper">' +
         '<header class="user-header">' +
