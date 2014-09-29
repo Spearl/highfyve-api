@@ -261,8 +261,8 @@ $(function () {
     });    
 
     $('#rateButton').on('click', function(){
-      current = 0;
-      changeState(Fyve.Views.welcome)
+      current = 1;
+      changeState(route[current]);
     });   
 
     // if ($('.refresh') && current == 4) {
