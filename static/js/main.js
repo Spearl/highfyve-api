@@ -230,30 +230,40 @@ $(function () {
 
     $('.rate-1').on('click', function(){
       console.log(this);
+      $('.rate-number').css('background-position', '-33px');
+      $('.rate-1').css('background-position', '0px');
       $('.rate-show').removeClass('rate-show').addClass('rate-hide');
       $('#rateImgOne').addClass('rate-show');
       $('#rateButton h2').html('Weak');
     });
     $('.rate-2').on('click', function(){
       console.log(this);
+      $('.rate-number').css('background-position', '-33px');
+      $('.rate-2').css('background-position', '0px');
       $('.rate-show').removeClass('rate-show').addClass('rate-hide');
       $('#rateImgTwo').addClass('rate-show');
       $('#rateButton h2').html('Fine');
     });
     $('.rate-3').on('click', function(){
       console.log(this);
+      $('.rate-number').css('background-position', '-33px');
+      $('.rate-3').css('background-position', '0px');
       $('.rate-show').removeClass('rate-show').addClass('rate-hide');
       $('#rateImgThree').addClass('rate-show');
       $('#rateButton h2').html('Solid');
     });
     $('.rate-4').on('click', function(){
       console.log(this);
+      $('.rate-number').css('background-position', '-33px');
+      $('.rate-4').css('background-position', '0px');
       $('.rate-show').removeClass('rate-show').addClass('rate-hide');
       $('#rateImgFour').addClass('rate-show');
       $('#rateButton h2').html('Awesome');
     });
     $('.rate-5').on('click', function(){
       console.log(this);
+      $('.rate-number').css('background-position', '-33px');
+      $('.rate-5').css('background-position', '0px');
       $('.rate-show').removeClass('rate-show').addClass('rate-hide');
       $('#rateImgFive').addClass('rate-show');
       $('#rateButton h2').html('Flawless');

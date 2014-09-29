@@ -293,6 +293,8 @@ a:hover {
 /* Rate your Fyve */
 .rate-title {
   text-align: center;
+  font-size: 1.5em;
+  line-height: 1.4em;
 }
 .rate-numbers {
   display: -webkit-flex;
@@ -317,7 +319,7 @@ a:hover {
   max-width: 32px;
   height: 50px;
   background-size: 98px;
-  background-position: 33px;
+  background-position: -33px;
 }
 #rateButton {
   margin-top: 25px;
@@ -386,7 +388,8 @@ a:hover {
 .user-wrapper .photo img {
   max-width: 100%;
 }
-.user-wrapper .map {
+.user-wrapper .map,
+.user-wrapper img {
   width: 100%;
 }
 .user-wrapper .text {
